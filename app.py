@@ -2,10 +2,12 @@ from flask import Flask, redirect, url_for, render_template , request , session 
 from datetime import timedelta
 from flask_sqlalchemy import SQLAlchemy
 from Modules.Login.login import login
+from Modules.Admin.admin import admin
 # db.create_all()
 app = Flask(__name__)
 app.secret_key = "hello"
 app.register_blueprint(login,url_prefix="/")
+app.register_blueprint(admin,url_prefix="/")
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
