@@ -18,7 +18,7 @@
                   <input type="password" class="form-control" id="exampleInputPassword1" name = "password">
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-outline-success">Login</button>
+                    <button type="submit" class="btn btn-outline-success">Register</button>
                 </div>
               </form>
         </div>
@@ -28,9 +28,9 @@
 {% with messages = get_flashed_messages() %}
 {% if messages %}
 {% for m in messages %}
-            <div class="alert alert-danger my-3 text-center">
-                {{m}}
-            </div>
+        <div class="alert alert-danger my-3 text-center">
+            {{m}}
+        </div>
         {% endfor %}
     {% endif %}
     {% endwith %}
