@@ -9,6 +9,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 @app.route("/")
 def home():
-    return "Hello!"
+    return render_template("Base.html")
 if __name__ == "__main__":
 	app.run(debug=True)
