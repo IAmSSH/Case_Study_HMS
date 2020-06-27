@@ -4,4 +4,4 @@ login = Blueprint("login",__name__,static_folder="static",template_folder="templ
 
 @login.route("/login")
 def auth():
-    return "This is the Auth Page!"
+    return render_template("login.html")
