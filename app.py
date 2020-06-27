@@ -6,14 +6,13 @@ from Modules.Models.userstore import userstore , db
 # db.create_all()
 app = Flask(__name__)
 app.secret_key = "hello"
-db.init_app(app)
 app.register_blueprint(login,url_prefix="/")
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
+db = SQLAlchemy(app)
 @app.route("/")
 def home():
     return render_template("Base.html")
 if __name__ == "__main__":
-    app.db.create_all()
+    db.create_all()
     app.run(debug=True)

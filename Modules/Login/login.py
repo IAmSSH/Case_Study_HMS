@@ -1,6 +1,10 @@
 from flask import Flask,redirect, url_for, render_template , request , session , flash , Blueprint
 from Modules.Models.userstore import userstore
 login = Blueprint("login",__name__,static_folder="static",template_folder="templates")
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
+
 
 @login.route("/login" , methods=["GET","POST"])
 def auth():
