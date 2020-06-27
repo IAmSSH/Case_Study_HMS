@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %} Login Page{% endblock %}
+
+{% block content %}
+
+<h3>Patient Registration</h3>
+
+<form action="/patients" method="post">
+   <p> <label for="ssnid">Patient SSN ID* </label>
+       <input type="text" id = "ssnid" name = "ssnid"> </p>
+
+    <p> <label for="name">Patient Name* </label>
+       <input type="text" id = "name" name = "name"> </p>
+
+     <p> <label for="age">Patient Age* </label>
+       <input type="number" id = "age" name = "age"> </p>
+
+    <p> <label for="date">Date of Admission* </label>
+       <input type="date" id = "date" name= "date"> </p>
+
+    <p> <label>Type of bed </label>
+        <select name="bed_type">
+            <option selected="selected" value="">Select bed type</option>
+            <option value = "gw">General ward</option>
+            <option value = "ss">Semi Sharing</option>
+            <option value = "sr">Single Room</option>
+         </select>
+    </p>
+
+    <p> <label for="address">Address </label>
+        <textarea id="address" name="address" rows="4" cols="30">
+        </textarea>
+    </p>
+
+   <p> <label for="city">City </label>
+       <input type="text" id = "city" name = "city"> </p>
+
+    <p><label>State </label>
+        <select name="state">
+            <option selected="selected" value="">Select State</option>
+            <option value = "an">Andaman and Nicobar Islands</option>
+            <option value = "ap">Andhra Pradesh</option>
+            <option value = "ar">Arunachal Pradesh </option>
+            <option value = "as">Assam </option>
+            <option value = "br">Bihar </option>
+            <option value = "ch">Chandigarh</option>
+            <option value = "cg">Chhattisgarh </option>
+            <option value = "dn">Dadra and Nagar Haveli </option>
+            <option value = "dl">Delhi </option>
+            <option value = "ga">Goa </option>
+            <option value = "gj">Gujarat</option>
+            <option value = "hr">Haryana</option>
+            <option value = "hp">Himachal Pradesh </option>
+            <option value = "jk">Jammu and Kashmir </option>
+            <option value = "jh">Jharkhand</option>
+            <option value = "ka">Karnataka</option>
+            <option value = "kl">Kerala</option>
+            <option value = "ld">Lakshadweep </option>
+            <option value = "mp">Madhya Pradesh </option>
+            <option value = "mh">Maharashtra </option>
+            <option value = "mn">Manipur </option>
+            <option value = "ml">Meghalaya </option>
+            <option value = "mz">Mizoram </option>
+            <option value = "nl">Nagaland </option>
+            <option value = "or">Odisha </option>
+            <option value = "py">Puducherry</option>
+            <option value = "pb">Punjab</option>
+            <option value = "rj">Rajasthan</option>
+            <option value = "sk">Sikkim</option>
+            <option value = "tn">Tamil Nadu</option>
+            <option value = "tg">Telangana </option>
+        </select>
+    </p>
+
+    <p> <input type="submit" value="submit">
+
+        <input type="reset" value="reset">
+    </p>
+</form>
+{% endblock %}

@@ -1,0 +1,43 @@
+<html>
+<head>
+    <style>
+    h1 {text-align: center;}
+    h3 {text-align: center;}
+    p {text-align: center;}
+    div {text-align: center;}
+    </style>
+    <title>{% block title %}{% endblock %}</title>
+
+</head>
+<body>
+<section>
+<h1> Hospital Management System</h1>
+  <p>  <select>
+            <option selected="selected" value="">Patient</option>
+            <option value = "registration">Patient Registration</option>
+            <option value = "update">Update Patient</option>
+            <option value = "delete">Delete Patient</option>
+            <option value = "view">View Patient</option>
+         </select>
+
+    <select>
+            <option selected="selected" value="pharmacy">Pharmacy</option>
+         </select>
+
+    <select>
+            <option selected="selected" value="diagnostics">Diagnostics</option>
+
+         </select>
+    </section>
+</p>
+<hr class="rounded">
+
+<section>
+    {% block content %}
+{% endblock %}
+</section>
+
+</body>
+
+
+</html>

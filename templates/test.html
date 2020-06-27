@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %} Login Page{% endblock %}
+
+{% block content %}
+
+<h3>Patient Registration</h3>
+
+<form action="/upload" method="POST">
+   <label for="ssnid">Patient SSN ID* </label>
+   <input type="text" id = "ssnid" name = "ssnid">
+   <input type="submit" name="submit">
+</form>
+{% endblock %}
