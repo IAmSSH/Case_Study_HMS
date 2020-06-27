@@ -1,0 +1,21 @@
+{%extends "Base.html"%}
+{% block content %}
+<table class="table table-dark my-5">
+    <thead>
+      <tr>
+        <th scope="col">User Id</th>
+        <th scope="col">Password</th>
+        <th scope="col">Time Stamp</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for item in values %}
+      <tr>
+        <td>{{item.login}}</td>
+        <td>{{item.password}}</td>
+        <td>{{item.time_stamp}}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock%}

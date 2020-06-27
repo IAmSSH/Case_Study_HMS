@@ -2,6 +2,7 @@ from Modules.Models.userstore import userstore, db
 from flask import Flask, redirect, url_for, render_template, request, session, Blueprint
 from flask import flash
 from datetime import datetime
+
 login = Blueprint("login", __name__, static_folder="static",
                   template_folder="templates")
 
@@ -34,7 +35,7 @@ def register():
         usr = userstore(login, password, dateTimeObj)
         db.session.add(usr)
         db.session.commit()
-        flash(f"Registering new User at {dateTimeObj} by user Id as {login}")
+        # flash(f"Registering new User at {dateTimeObj} by user Id as {login}")
         return "Success!"
     else :
         return render_template("register.html")
