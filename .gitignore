@@ -136,3 +136,8 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+user.db
+users.db
+user.sqlite3
+users.sqlite3
