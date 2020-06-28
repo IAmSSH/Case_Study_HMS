@@ -67,6 +67,7 @@ def create_patient():
         
         return render_template('all_patients.html', user_list=Patient.query.all())
     else:
+        print('bed_type for patient 1 : ' + Patient.query.get(1).bed_type)
         return render_template('all_patients.html', user_list=Patient.query.all())
 
 @app.route('/test')
