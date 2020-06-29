@@ -1,4 +1,5 @@
-from Modules.Models.userstore import userstore, db
+from root.Modules.Models.userstore import userstore
+from root import db
 from flask import Flask, redirect, url_for, render_template, request, session, Blueprint
 from flask import flash
 from datetime import datetime
@@ -6,6 +7,10 @@ from passlib.hash import sha256_crypt
 
 login = Blueprint("login", __name__, static_folder="static",
                   template_folder="templates")
+
+@login.route('/')
+def root():
+    return redirect(url_for('login.auth'))
 
 @login.route("/login", methods=["GET", "POST"])
 def auth():

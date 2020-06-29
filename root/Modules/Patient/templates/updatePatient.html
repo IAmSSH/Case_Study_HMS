@@ -5,6 +5,18 @@
 
 <h3> Update Patient</h3>
 
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+        <div  class="alert alert-success" role="alert">
+            {{ message }}
+            <a href="/patients">View all patients</a>
+        </div>
+
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
 <form action="/update" method="POST">
     <label for="patientid">Patient ID* </label>
     <!-- <input type="text" id="patientid" name="patientid" value="" required> -->
@@ -23,7 +35,15 @@
     <input type="submit" name='Get' value="Get">
 </form>
 
-<form action="#" method="POST">
+<form action="/update" method="POST">
+
+    <input 
+        type="text"
+        id="patientid"
+        name="patientid"
+        value="{{patient_data.patient_id}}"
+        style="display: none;" 
+    >
 
     <p> <label for="name">Patient Name* </label>
         <input 

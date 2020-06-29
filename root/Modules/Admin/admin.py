@@ -1,5 +1,7 @@
 from flask import Flask , render_template , Blueprint ,session
-from Modules.Models.userstore import userstore , db
+from root.Modules.Models.userstore import userstore
+from root import db
+
 admin = Blueprint("admin",__name__,static_folder="static",template_folder="templates")
 
 #Admin page
