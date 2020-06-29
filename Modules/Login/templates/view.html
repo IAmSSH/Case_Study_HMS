@@ -1,0 +1,7 @@
+{% extends "Base.html" %}
+{% block title %}View All User{% endblock%}
+{% block content %}
+	{% for item in values%}
+	<p>Name:{{item.login}},Password: {{item.password}}</p>
+	{%endfor%}
+{% endblock %}

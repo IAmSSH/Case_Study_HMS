@@ -1,0 +1,133 @@
+{% extends "Base.html" %}
+{% block title %} Login Page{% endblock %}
+
+{% block content %}
+
+<h3>Delete Patient</h3>
+
+
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <div  class="alert alert-danger" role="alert">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+
+
+<form action="/delete" method="POST">
+    <label for="patientid">Patient ID* </label>
+    <!-- <input type="text" id="patientid" name="patientid" value="" disabled> -->
+    <input 
+        type="text"
+        id="patientid"
+        name="patientid"
+        {%if patient_data.patient_id %} 
+            value="{{patient_data.patient_id}}"
+        {% else %}
+            value=""
+        {% endif %}
+        required 
+    >
+
+    <input type="submit" name='Get' value="Get">
+</form>
+
+<form action="#" method="POST">
+    <input 
+        style="display: none" 
+        type="text"
+        id="patientid"
+        name="patientid"
+        value="{{patient_data.ssn_id}}"
+    >
+    <div> <label for="name">Patient Name* </label>
+        <input 
+            type="text" 
+            id="name" 
+            name="name" 
+            {%if patient_data.patient_id %} 
+                value="{{ patient_data.name }}"
+            {% else %}
+                value=""
+            {% endif %}
+            disabled
+        > 
+    </div>
+
+    <div> <label for="age">Patient Age* </label>
+        <input type="number" id="age" name="age" value="{{patient_data.age}}" disabled> </div>
+
+    <div> <label for="date">Date of Admission* </label>
+        <input type="date" id="date" name="date" value="{{patient_data.admission_date}}" disabled> </div>
+
+
+    <div>
+        <label>Type of bed </label>
+        <select name='bed_type' disabled>
+            <option value="">Select bed type</option>
+            <option {%if patient_data.bed_type=='gw' %}selected="selected" {%endif%} value="gw">General ward</option>
+            <option {%if patient_data.bed_type=='ss' %}selected="selected" {%endif%} value="ss">Semi Sharing</option>
+            <option {%if patient_data.bed_type=='sr' %}selected="selected" {%endif%} value="sr">Single Room</option>
+        </select>
+    </div>
+
+    <div> <label for="address">Address </label>
+        <textarea 
+            id="address" 
+            name="address" 
+            rows="4" 
+            cols="30" 
+            disabled
+        >{%if patient_data.address %}{{ patient_data.address }}{% endif %}</textarea>
+    </div>
+
+    <div> <label for="city">City </label>
+        <input type="text" id="city" name="city" value="{{patient_data.city}}" disabled> </div>
+
+    <div><label>State </label>
+        <select name="state" disabled>
+            <option value="">Select State</option>
+            <option {%if patient_data.state=='an' %}selected="selected" {%endif%} value="an">Andaman and Nicobar Islands
+            </option>
+            <option {%if patient_data.state=='ap' %}selected="selected" {%endif%} value="ap">Andhra Pradesh</option>
+            <option {%if patient_data.state=='ar' %}selected="selected" {%endif%} value="ar">Arunachal Pradesh </option>
+            <option {%if patient_data.state=='as' %}selected="selected" {%endif%} value="as">Assam </option>
+            <option {%if patient_data.state=='br' %}selected="selected" {%endif%} value="br">Bihar </option>
+            <option {%if patient_data.state=='ch' %}selected="selected" {%endif%} value="ch">Chandigarh</option>
+            <option {%if patient_data.state=='cg' %}selected="selected" {%endif%} value="cg">Chhattisgarh </option>
+            <option {%if patient_data.state=='dh' %}selected="selected" {%endif%} value="dn">Dadra and Nagar Haveli
+            </option>
+            <option {%if patient_data.state=='dl' %}selected="selected" {%endif%} value="dl">Delhi </option>
+            <option {%if patient_data.state=='ga' %}selected="selected" {%endif%} value="ga">Goa </option>
+            <option {%if patient_data.state=='gj' %}selected="selected" {%endif%} value="gj">Gujarat</option>
+            <option {%if patient_data.state=='hr' %}selected="selected" {%endif%} value="hr">Haryana</option>
+            <option {%if patient_data.state=='hp' %}selected="selected" {%endif%} value="hp">Himachal Pradesh </option>
+            <option {%if patient_data.state=='jk' %}selected="selected" {%endif%} value="jk">Jammu and Kashmir </option>
+            <option {%if patient_data.state=='jh' %}selected="selected" {%endif%} value="jh">Jharkhand</option>
+            <option {%if patient_data.state=='ka' %}selected="selected" {%endif%} value="ka">Karnataka</option>
+            <option {%if patient_data.state=='kl' %}selected="selected" {%endif%} value="kl">Kerala</option>
+            <option {%if patient_data.state=='ld' %}selected="selected" {%endif%} value="ld">Lakshadweep </option>
+            <option {%if patient_data.state=='mp' %}selected="selected" {%endif%} value="mp">Madhya Pradesh </option>
+            <option {%if patient_data.state=='mh' %}selected="selected" {%endif%} value="mh">Maharashtra </option>
+            <option {%if patient_data.state=='mn' %}selected="selected" {%endif%} value="mn">Manipur </option>
+            <option {%if patient_data.state=='ml' %}selected="selected" {%endif%} value="ml">Meghalaya </option>
+            <option {%if patient_data.state=='mz' %}selected="selected" {%endif%} value="mz">Mizoram </option>
+            <option {%if patient_data.state=='nl' %}selected="selected" {%endif%} value="nl">Nagaland </option>
+            <option {%if patient_data.state=='or' %}selected="selected" {%endif%} value="or">Odisha </option>
+            <option {%if patient_data.state=='py' %}selected="selected" {%endif%} value="py">Puducherry</option>
+            <option {%if patient_data.state=='pb' %}selected="selected" {%endif%} value="pb">Punjab</option>
+            <option {%if patient_data.state=='rj' %}selected="selected" {%endif%} value="rj">Rajasthan</option>
+            <option {%if patient_data.state=='sk' %}selected="selected" {%endif%} value="sk">Sikkim</option>
+            <option {%if patient_data.state=='tn' %}selected="selected" {%endif%} value="tn">Tamil Nadu</option>
+            <option {%if patient_data.state=='tg' %}selected="selected" {%endif%} value="tg">Telangana </option>
+        </select>
+    </div>
+
+    <div> 
+        <input type="submit" name='Delete' value="Delete"> 
+    </div>
+</form>
+{% endblock %}
