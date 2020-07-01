@@ -1,0 +1,97 @@
+{% extends "Base.html" %}
+{% block title %} Login Page{% endblock %}
+
+
+{% block content %}
+
+ <h2 class="text-center my-4">Pharmacy Management</h2>
+
+<form action="/pharmacy/get_details" method="GET" class="my-3">
+    <label for="patientid">Patient ID*</label>
+    <input type="text" id="patientid" name="patientid" required>
+  <button class="btn btn-secondary" id="btn">Get</button>
+</form>
+
+{% if data %}
+  <table class="table">
+
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Patient ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Address</th>
+        <th scope="col">DOJ</th>
+        <th scope="col">Type of room</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+          <th scope="row">{{ data.patient_id }}</th>
+          <td>{{ data.name }}</td>
+          <td>{{ data.age }}</td>
+          <td>{{ data.address }}</td>
+          <td>{{ data.admission_date }}</td>
+          <td>{{ data.bed_type }}</td>
+      </tr>
+    </tbody>
+
+  </table>
+
+  <br>
+
+  <h3 class="text-center my-4">Medicines Issued</h3>
+  <table class="table">
+        <thead class="thead-light">
+          <tr>
+              <th scope="col">Medicine</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Rate</th>
+              <th scope="col">Amount</th>
+          </tr>
+      </thead>
+      <tbody>
+      <tr>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+      </tr>
+      </tbody>
+  </table>
+  <br>
+
+  <div><button>Issue Medicine</button> </div>
+
+  <br>
+
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Medicine</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Rate</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Issue</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button>Add</button>
+
+  <div>
+    <button>Update</button>
+  </div>
+{% endif %}
+
+
+{% endblock %}

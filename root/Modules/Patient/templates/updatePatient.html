@@ -70,9 +70,9 @@
         <label>Type of bed </label>
         <select name='bed_type'>
             <option value="">Select bed type</option>
-            <option {%if patient_data.bed_type=='gw' %}selected="selected" {%endif%} value="gw">General ward</option>
-            <option {%if patient_data.bed_type=='ss' %}selected="selected" {%endif%} value="ss">Semi Sharing</option>
-            <option {%if patient_data.bed_type=='sr' %}selected="selected" {%endif%} value="sr">Single Room</option>
+            <option {%if patient_data.bed_type=='General ward' %}selected="selected" {%endif%} value="General ward">General ward</option>
+            <option {%if patient_data.bed_type=='Semi Sharing' %}selected="selected" {%endif%} value="Semi Sharing">Semi Sharing</option>
+            <option {%if patient_data.bed_type=='Single Room' %}selected="selected" {%endif%} value="Single Room">Single Room</option>
         </select>
     </p>
 

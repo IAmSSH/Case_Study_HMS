@@ -5,16 +5,19 @@ from root import db
 from sqlalchemy.exc import IntegrityError
 
 patientRoutes = Blueprint("patientRoutes", __name__, static_folder="static",
-                  template_folder="templates")
+                          template_folder="templates")
+
 
 @patientRoutes.route('/register_patient')
 def register_patient():
     return render_template('patientRegistration.html')
 
+
 @patientRoutes.route('/register_success')
 def register_success():
     flash("Patient created successfully.", 'success')
     return redirect(url_for('patientRoutes.register_patient'))
+
 
 @patientRoutes.route('/patients', methods=['GET', 'POST'])
 def create_patient():
@@ -54,18 +57,16 @@ def create_patient():
     else:
         return render_template('all_patients.html', user_list=Patient.query.all())
 
-@patientRoutes.route('/test')
-def test():
-    return render_template('test.html')
 
 @patientRoutes.route('/update_success')
 def update_success():
     flash("Record updated successfully")
     return redirect(url_for('patientRoutes.update'))
 
+
 @patientRoutes.route("/update", methods=['GET', 'POST'])
 def update():
-    if request.method == "POST":        
+    if request.method == "POST":
         if 'Get' in request.form:
             req_id = int(request.form['patientid'])
             found_patient = Patient.query.get(req_id)
@@ -81,8 +82,9 @@ def update():
             city = request.form['city']
             state = request.form['state']
 
-            update_Record = Patient.query.filter_by(patient_id=patient_id).first()
-            
+            update_Record = Patient.query.filter_by(
+                patient_id=patient_id).first()
+
             update_Record.name = name
             update_Record.age = age
             update_Record.admission_date = admission_date
@@ -90,13 +92,13 @@ def update():
             update_Record.address = address
             update_Record.city = city
             update_Record.state = state
-            
 
             db.session.commit()
-            
+
             return redirect(url_for('patientRoutes.update_success'))
 
     return render_template('updatePatient.html', patient_data=Patient())
+
 
 @patientRoutes.route("/delete", methods=['GET', 'POST'])
 def delete():
@@ -120,22 +122,18 @@ def delete():
 
     return render_template('deletePatient.html', patient_data=Patient())
 
-@patientRoutes.route('/upload', methods=['GET', 'POST'])
-def upload():
-    if request.method == 'POST':
-        ssn_id = request.form['ssnid']
-        patient = Test(ssn_id=ssn_id)
 
-        db.session.add(patient)
-        db.session.commit()
-
-        return render_template('all_patients.html', user_list=Test.query.all())
-    else:
-        return render_template('all_patients.html', user_list=Test.query.all())
+# @patientRoutes.route('/test')
+# def test():
+#     d = {
+#         'a' : 1,
+#         'b' : 2
+#     }
+#     return render_template('pharmacy.html', data=d)
 
 @patientRoutes.route('/clear_patients')
 def clear():
     Patient.query.delete()
-    db.session.commit()    
+    db.session.commit()
     flash('Patients cleared')
     return redirect(url_for('patientRoutes.create_patient'))
