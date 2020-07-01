@@ -11,6 +11,7 @@ login = Blueprint("login", __name__, static_folder="static",
 @login.route("/login", methods=["GET", "POST"])
 def auth():
     if request.method == "POST":
+        found_user = None
         login = request.form["user_id"]
         password = request.form["password"]
         dateTimeObj = datetime.now()
@@ -54,4 +55,4 @@ def logout():
 
 @login.route("/view")
 def view():
-	return render_template("view.html",values=userstore.query.all())
+	return render_template("Admin.html",values=userstore.query.all())
