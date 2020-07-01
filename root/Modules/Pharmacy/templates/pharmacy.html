@@ -3,8 +3,9 @@
 
 
 {% block content %}
-
- <h2 class="text-center my-4">Pharmacy Management</h2>
+<div class="text-center alert alert-info my-2" style="padding: 0.2px 0.2px;">
+  <h3 class="text-center my-4">Pharmacy Management</h3>
+</div>
 
 <form action="/pharmacy/get_details" method="GET" class="my-3">
     <label for="patientid">Patient ID*</label>
@@ -39,58 +40,108 @@
 
   </table>
 
-  <br>
-
-  <h3 class="text-center my-4">Medicines Issued</h3>
+  <hr>
+  <div class="text-center">
+    <div class="alert alert-info" style="padding: 0.2px 0.2px;">
+      <h5 class="my-1">Medicines Issued</h5>
+    </div>
+  </div>
   <table class="table">
         <thead class="thead-light">
           <tr>
               <th scope="col">Medicine</th>
-              <th scope="col">Quantity</th>
               <th scope="col">Rate</th>
+              <th scope="col">Quantity</th>
               <th scope="col">Amount</th>
           </tr>
       </thead>
       <tbody>
-      <tr>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-      </tr>
+        {% for item in meds_to_issue %}
+        <tr>
+          <td> 
+            {{item["meds"].med_name}}
+          </td>
+          <td> 
+            {{item["meds"].rate}}
+          </td>
+          <td> 
+            {{item["qty"]}}
+          </td>
+          <td>
+            {{item["amount"]}}
+          </td>
+        </tr>
+        {% endfor %}
       </tbody>
   </table>
-  <br>
+  <hr>
 
-  <div><button>Issue Medicine</button> </div>
+  <div class="text-center"><button class="btn btn-md btn-outline-success">Issue Medicines</button> </div>
 
-  <br>
-
-  <table class="table">
-    <thead class="thead-light">
-      <tr>
-        <th scope="col">Medicine</th>
-        <th scope="col">Quantity</th>
-        <th scope="col">Rate</th>
-        <th scope="col">Amount</th>
-        <th scope="col">Issue</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <button>Add</button>
-
-  <div>
-    <button>Update</button>
+  <hr>
+  <div class="text-center">
+    <div class="alert alert-info" style="padding: 0.2px 0.2px;">
+      <h5 class="my-1">Find Medicines to Add </h5>
+    </div>
   </div>
+  <form action="/pharmacy/get_details" method="GET" class="text-center">
+    <input type="hidden" class="form-control" name="patientid" id="patientid" value="{{id}}">
+      <label for="med_id">
+        Find Medicine by Id :
+      </label> 
+      <input type="text" id="med_id" name="med_id" >
+      <button class="btn btn-md btn-primary" type="submit">Get</button>
+  </form>
+  <hr>
+  <div class="text-center">
+    <div class="alert alert-info" style="padding: 0.2px 0.2px;">
+      <h5 class="my-1">Add Medicines</h5>
+    </div>
+  </div>
+  {% if found %}
+  <form action="/pharmacy/get_details" method="POST">
+    <table class="table">
+      <thead class="thead-light">
+        <input type="hidden" class="form-control" name="patientid" id="patientid" value="{{id}}">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Availability</th>
+          <th scope="col">Qty.</th>
+          <th scope="col">Add</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> 
+            <input type="text" class="form-control" name="med_id" value="{{found.med_id}}" readonly>
+          </td>
+          <td> 
+            <input type="text" class="form-control" name="med_name" value="{{found.med_name}}" readonly>
+          </td>
+          <td> 
+            <input type="text" class="form-control" name="available" value="{{avl}}" readonly>
+          </td>
+          <td>
+            <input name="med_qty_req" class="form-control" type="number" max="{{avl}}" required >
+          </td>
+          <td>
+            <button class="btn btn-md btn-primary" type="submit">Add</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  {% else %}
+  <div class="text-center">
+    Currently No Medicines to add ! , please use find medicines option to fine one !
+  </div>
+  {% endif %}
+  <hr>
+  <div class="text-center">
+    <button class="btn btn-warning btn-lg">Update</button>
+  </div>
+  <hr>
 {% endif %}
 
 

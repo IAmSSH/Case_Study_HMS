@@ -1,0 +1,23 @@
+{% extends 'Base.html' %}
+{% block content %}
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col"> med_id </th>
+            <th scope="col"> med_name</th>
+            <th scope="col"> quantity </th>
+            <th scope="col"> rate </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for items in med_list %}
+        <tr>
+            <td>{{items.med_id}}</td>
+            <td>{{items.med_name}}</td>
+            <td>{{items.quantity }}</td>
+            <td>{{items.rate}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
