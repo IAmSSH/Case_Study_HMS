@@ -32,7 +32,7 @@ def get_details():
             found_med = Medicine_Master.query.get(med_id)
             if found_med:
             	avl = found_med.quantity
-            	return render_template('pharmacy.html', data=Patient.query.get(id), id=id, avl=avl, found=found_med,)
+            	return render_template('pharmacy.html', data=Patient.query.get(id), id=id, avl=avl, found=found_med,meds_to_issue=meds_to_issue)
         return render_template('pharmacy.html', data=Patient.query.get(id), id=id, avl=avl, meds_to_issue=meds_to_issue)
     else:
         id = request.form["patientid"]
