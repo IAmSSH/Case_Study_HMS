@@ -1,0 +1,99 @@
+{% extends "Base.html" %}
+{% block title %} Login Page{% endblock %}
+
+{% block content %}
+
+<h2 class="text-center my-5">Patient Registration</h2>
+
+{% with messages = get_flashed_messages(with_categories=True) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div  class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<form action="/patients" class="pb-5" method="post" style="width: 50%; margin: 0 auto">
+   
+   <div class="form-group"> 
+    <label for="ssnid">Patient SSN ID* </label>
+       <input required class="form-control" type="text" id = "ssnid" name = "ssnid"> 
+   </div>
+
+    <div class="form-group"> <label for="name">Patient Name* </label>
+       <input required class="form-control" type="text" id = "name" name = "name"> 
+   </div>
+
+     <div class="form-group"> <label for="age">Patient Age* </label>
+       <input required class="form-control" type="number" id = "age" name = "age"> 
+   </div>
+
+    <div class="form-group"> <label for="date">Date of Admission* </label>
+       <input required class="form-control" type="date" id = "date" name= "date"> 
+   </div>
+
+    <div class="form-group"> <label>Type of bed </label>
+        <select name="bed_type" class="custom-select" required>
+            <option selected="selected" value="">Select bed type</option>
+            <option value = "General ward">General ward</option>
+            <option value = "Semi Sharing">Semi Sharing</option>
+            <option value = "Single Room">Single Room</option>
+         </select>
+    
+    </div>
+
+
+
+    <div class="form-group"> <label for="address">Address </label>
+        <textarea class="form-control" id="address" name="address" rows="3"></textarea>
+    
+    </div>
+
+   <div class="form-group"> <label for="city">City </label>
+       <input required class="form-control" type="text" id = "city" name = "city"> 
+   </div>
+
+    <div class="form-group"><label>State </label>
+        <select name="state" class="custom-select" required>
+            <option selected="selected" value="">Select State</option>
+            <option value = "an">Andaman and Nicobar Islands</option>
+            <option value = "ap">Andhra Pradesh</option>
+            <option value = "ar">Arunachal Pradesh </option>
+            <option value = "as">Assam </option>
+            <option value = "br">Bihar </option>
+            <option value = "ch">Chandigarh</option>
+            <option value = "cg">Chhattisgarh </option>
+            <option value = "dn">Dadra and Nagar Haveli </option>
+            <option value = "dl">Delhi </option>
+            <option value = "ga">Goa </option>
+            <option value = "gj">Gujarat</option>
+            <option value = "hr">Haryana</option>
+            <option value = "hp">Himachal Pradesh </option>
+            <option value = "jk">Jammu and Kashmir </option>
+            <option value = "jh">Jharkhand</option>
+            <option value = "ka">Karnataka</option>
+            <option value = "kl">Kerala</option>
+            <option value = "ld">Lakshadweep </option>
+            <option value = "mp">Madhya Pradesh </option>
+            <option value = "mh">Maharashtra </option>
+            <option value = "mn">Manipur </option>
+            <option value = "ml">Meghalaya </option>
+            <option value = "mz">Mizoram </option>
+            <option value = "nl">Nagaland </option>
+            <option value = "or">Odisha </option>
+            <option value = "py">Puducherry</option>
+            <option value = "pb">Punjab</option>
+            <option value = "rj">Rajasthan</option>
+            <option value = "sk">Sikkim</option>
+            <option value = "tn">Tamil Nadu</option>
+            <option value = "tg">Telangana </option>
+        </select>
+    
+    </div>
+
+    <div class="form-group d-flex justify-content-between"> 
+        <input class="btn btn-lg btn-primary mt-3" type="submit" value="Submit">
+        <input class="btn btn-lg btn-secondary mt-3" type="reset" value="Reset">
+    </div>
+</form>
+{% endblock %}

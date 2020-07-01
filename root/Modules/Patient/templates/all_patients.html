@@ -1,0 +1,66 @@
+{% extends "Base.html" %}
+{% block title %} Login Page{% endblock %}
+
+{% block content %}
+    <h1 class="text-center my-4">
+    	View Patients
+    </h1>
+
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Patient Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Age</th>
+          <th scope="col">Address</th>
+          <th scope="col">DOJ</th>
+          <th scope="col">Type of room</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% if user_list %}
+            {% for user in user_list %}
+                <tr>
+                  <th scope="row">{{ user.patient_id }}</th>
+                  <td>{{ user.name }}</td>
+                  <td>{{ user.age }}</td>
+                  <td>{{ user.address }}</td>
+                  <td>{{ user.admission_date }}</td>
+                  <td>{{ user.bed_type }}</td>
+                </tr>
+            {% endfor %}
+
+        {% else %}
+
+            <div class="alert alert-primary" role="alert">No records to display</div>
+
+        {% endif %}
+
+
+      </tbody>
+    </table>
+
+
+{% endblock %}
+
+
+
+
+    <!-- <ul>
+    {% for user in user_list %}
+    	<li>SSN ID : {{ user.ssn_id }}</li>
+    	<li>Patient ID : {{ user.patient_id }}</li>
+    	<li>Name : {{ user.name }}</li>
+    	<li>Age : {{ user.age }}</li>
+    	<li>Adm date : {{ user.admission_date }}</li>
+    	<li>bed_type : {{ user.bed_type }}</li>
+    	<li>address : {{ user.address }}</li>
+    	<li>city : {{ user.city }}</li>
+    	<li>state : {{ user.state }}</li>
+    	<li>status : {{ user.status }}</li>
+    	<br>
+    {% endfor %}
+    </ul>
+</body>
+</html> -->
