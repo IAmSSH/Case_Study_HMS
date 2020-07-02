@@ -1,5 +1,5 @@
 from flask import Flask , render_template , Blueprint ,session
-from root.Modules.Models.userstore import userstore
+from root.Modules.Models.userstore import Medicine_Master, Patient, Track_Medicines ,userstore
 from root import db
 
 admin = Blueprint("admin",__name__,static_folder="static",template_folder="templates")
@@ -9,4 +9,8 @@ admin = Blueprint("admin",__name__,static_folder="static",template_folder="templ
 def view():
     # db.session.query(userstore).delete()
     # db.session.commit()
-    return render_template("Admin.html", values = userstore.query.all())
+    track = Track_Medicines.query.all()
+    print(track)
+    for item in track:
+        print(item)
+    return render_template("Admin.html", track = track)

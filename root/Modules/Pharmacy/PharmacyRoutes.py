@@ -1,7 +1,7 @@
 from flask import Flask, redirect, url_for, render_template
 from flask import request, session, Blueprint, flash
 from sqlalchemy.exc import IntegrityError
-
+from root.Modules.Models.userstore import Track_Medicines
 from root.Modules.Models.userstore import Patient, Medicine_Master
 from root import db
 
@@ -18,6 +18,16 @@ def view_all():
 def test():
     return render_template('pharmacy.html')
 
+@pharmacyRoutes.route('/submit',methods=['GET','POST'])
+def linkDetails():
+    if request.method == 'POST':
+        id = request.form["pid"]
+        for item in meds_to_issue:
+            track = Track_Medicines(med_id = item["meds"].med_id, patient_id = id ,quantity_issued = item["qty"])
+            db.session.add(track)
+            db.session.commit()
+            print(track.id , track.med_id , track.patient_id , track.quantity_issued)
+        return "Success"
 
 meds_to_issue = []
 @pharmacyRoutes.route('/pharmacy/get_details', methods=['GET', 'POST'])

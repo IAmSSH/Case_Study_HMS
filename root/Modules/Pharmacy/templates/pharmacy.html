@@ -46,6 +46,7 @@
       <h5 class="my-1">Medicines Issued</h5>
     </div>
   </div>
+  
   <table class="table">
         <thead class="thead-light">
           <tr>
@@ -75,8 +76,12 @@
       </tbody>
   </table>
   <hr>
-
-  <div class="text-center"><button class="btn btn-md btn-outline-success">Issue Medicines</button> </div>
+  <form action="/submit" method="POST">
+  <div class="text-center">
+      <input type="hidden" name="pid" id="pid" value="{{id}}">
+      <button class="btn btn-md btn-outline-success" type="submit">Issue Medicines</button> 
+    </div>
+  </form>
 
   <hr>
   <div class="text-center">

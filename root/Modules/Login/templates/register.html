@@ -20,6 +20,14 @@
                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}"
                 title="Password should contain 10 characters including one special character, one upper case, one numeric.">
                 </div>
+                <div class="form-group">
+                    <label for="user_type">User Type : </label>
+                    <select class="form-control" id="user_type" name = "user_type" required>
+                        <option>Pharmacist</option>
+                        <option>Admin</option>
+                        <option>Diagnostic</option>
+                      </select>
+                  </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-outline-success">Register</button>
                 </div>

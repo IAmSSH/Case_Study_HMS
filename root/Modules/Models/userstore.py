@@ -5,6 +5,7 @@ class userstore(db.Model):
     time_stamp = db.Column("time_stamp", db.DateTime, primary_key=True)
     login = db.Column(db.String(100))
     password = db.Column(db.String(100))
+    user_type = db.Column(db.String(100))
 
 
 class Patient(db.Model):

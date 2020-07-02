@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block title %} addDiagnostics{% endblock %}
+
+
+{% block content %}
+<style>
+.fixed_header{
+    width: 90%;
+    margin: 0 auto;
+    table-layout: fixed;
+    border-collapse: collapse;
+
+}
+
+.fixed_header tbody{
+  overflow: auto;
+  height: 5vh;
+
+}
+
+.fixed_header thead {
+  background: black;
+  color:#fff;
+}
+
+.fixed_header th, .fixed_header td {
+  padding: 15px;
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+
+}
+table, th, td {
+  border: 1px solid black;
+
+}
+</style>
+ <h1 class="text-center my-4">
+    	Add Diagnostics
+    </h1>
+
+<div> <label for="patientid">Patient ID* </label>
+       <input type="text" id = "patientid" name = "patientid" required >
+        <button name="Get" class="btn btn-secondary btn-md">Get</button> </p>
+    <! –– define onclick to fetch values  ––>
+
+    </div>
+
+<table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Patient ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Age</th>
+          <th scope="col">Address</th>
+          <th scope="col">DOJ</th>
+          <th scope="col">Type of room</th>
+        </tr>
+      </thead>
+      <tbody>
+    <tr>
+        <th scope="row"> </th>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+
+<h1 class="text-center my-4"> Diagnostics Conducted </h1>
+<table class="table">
+      <thead class="thead-light">
+        <tr>
+            <th scope="col">Name of the test</th>
+            <th scope="col">Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td> </td>
+        <td> </td>
+    </tr>
+    </tbody>
+</table>
+<br>
+
+<div><button onclick="myFunction()"> Add Diagnostic </button> </div>
+    <! –– define onclick to fetch values  ––>
+
+<br>
+
+<table class="table">
+      <thead class="thead-light">
+        <tr>
+            <th scope="col">Name of the test</th>
+            <th scope="col">Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td> </td>
+        <td> </td>
+    </tr>
+    </tbody>
+</table>
+<button onclick="myFunction()"> Add </button>
+    <! –– define onclick to fetch values  ––>
+
+
+<div> <button onclick="myFunction()"> Update </button> </div>
+    <! –– define onclick to fetch values  ––>
+
+{% endblock %}
