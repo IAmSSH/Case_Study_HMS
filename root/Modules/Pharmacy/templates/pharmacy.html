@@ -79,7 +79,7 @@
   <form action="/submit" method="POST">
   <div class="text-center">
       <input type="hidden" name="pid" id="pid" value="{{id}}">
-      <button class="btn btn-md btn-outline-success" type="submit">Issue Medicines</button> 
+      <button class="btn btn-md btn-success" type="submit">Issue Medicines</button> 
     </div>
   </form>
 
@@ -128,7 +128,7 @@
             <input type="text" class="form-control" name="available" value="{{avl}}" readonly>
           </td>
           <td>
-            <input name="med_qty_req" class="form-control" type="number" max="{{avl}}" required >
+            <input name="med_qty_req" class="form-control" type="number" max="{{avl}}" min = 1 required >
           </td>
           <td>
             <button class="btn btn-md btn-primary" type="submit">Add</button>
@@ -144,10 +144,36 @@
   {% endif %}
   <hr>
   <div class="text-center">
-    <button class="btn btn-warning btn-lg">Update</button>
+    <div class="alert alert-secondary" style="padding: 0.5px 0.5px;">
+      <h3 class="my-2">All Medicines</h3>
+    </div>
   </div>
   <hr>
 {% endif %}
-
-
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Qty Availabile</th>
+      <th>Rate</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in all_meds %}
+    <tr>
+      <td>{{item.med_id}}</td>
+      <td>{{item.med_name}}</td>
+      <td>{{item.quantity}}</td>
+      <td>{{item.rate}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% with messages = get_flashed_messages() %} {% if messages %} 
+{% for m in messages %}
+<div class="alert alert-danger my-3 text-center">
+  {{m}}
+</div>
+{% endfor %} {% endif %} {% endwith %} 
 {% endblock %}

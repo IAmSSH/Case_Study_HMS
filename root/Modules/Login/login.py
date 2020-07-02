@@ -1,6 +1,6 @@
 from root.Modules.Models.userstore import userstore
 from root import db
-from flask import Flask, redirect, url_for, render_template, request, session, Blueprint
+from flask import Flask, redirect, url_for, render_template, request, session, Blueprint , redirect
 from flask import flash
 from datetime import datetime
 from passlib.hash import sha256_crypt
@@ -38,7 +38,7 @@ def auth():
                 "Admin": "/view",
                 "Diagnostic": "/diagnos"
             }
-            return switcher.get(user_type,"Type not identifiable")
+            return redirect(switcher.get(user_type,"Type not identifiable"))
         else:
             flash("Invalid Credentials")
             return render_template("login.html")

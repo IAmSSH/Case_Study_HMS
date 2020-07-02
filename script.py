@@ -6,10 +6,10 @@ from root.Modules.Models.userstore import Medicine_Master, Patient, Track_Medici
 
 # patient_1 = Patient(ssn_id=12, name='asd', age=32, admission_date=12, bed_type='asd', address='asd', city='asd', state='asd', status='asd')
 # med_1 = Medicine_Master(med_name='sad', quantity=12, rate=21)
-
-# db.session.add(patient_1)
 # db.session.add(med_1)
 # db.session.commit()
+
+# db.session.add(patient_1)
 
 # pid = Patient.query.get(1).patient_id
 # mid = Medicine_Master.query.get(1).med_id
@@ -18,6 +18,8 @@ from root.Modules.Models.userstore import Medicine_Master, Patient, Track_Medici
 
 # db.session.add(track_1)
 # db.session.commit()
-track = Track_Medicines.query.all()
-for item in track:
-    print(item.id)
+# # track = Track_Medicines.query.all()
+# db.session.query(Track_Medicines).delete()
+# # db.session.query(Medicine_Master).delete()
+# db.session.commit()
+# print(Track_Medicines.query.all())

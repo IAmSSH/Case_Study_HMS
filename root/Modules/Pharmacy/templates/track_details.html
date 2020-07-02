@@ -1,0 +1,22 @@
+{%extends "Base.html"%}
+{% block content %}
+<table class="table table-dark my-5">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Patient Id</th>
+        <th scope="col">Med Id</th>
+        <th scope="col">Qty</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for item in track %}
+      <tr>
+        <td>{{item.id}}</td>
+        <td>{{item.patient_id}}</td>
+        <td>{{item.med_id}}</td>
+        <td>{{item.quantity_issued}}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+{% endblock%}
