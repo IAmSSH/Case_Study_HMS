@@ -68,10 +68,11 @@ def register():
 
 @login.route("/logout")
 def logout():
-    flash("You have been successfully logged out!")
-    session.pop("login", None)
-    session.pop("password", None)
-    return redirect(url_for('login'))
+    if "login" in session:
+        flash("You have been successfully logged out!")
+        session.pop("login", None)
+        session.pop("password", None)
+    return redirect(url_for('login.auth'))
 
 
 @login.route("/view")
