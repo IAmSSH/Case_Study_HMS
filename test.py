@@ -34,6 +34,15 @@ class FlaskTestCase(unittest.TestCase):
             follow_redirects=True
         )
         self.assertIn(b'Ankit', response.data)
+    # Ensure Authentication Behaves Correctly
+    def test_auth(self):
+        tester = app.test_client(self)
+        response = tester.post(
+            '/login',
+            data=dict(user_id="asdjkhq2hj232389", password="21321321321ascdW"),
+            follow_redirects=True
+        )
+        self.assertIn(b'Invalid Credentials', response.data)
     # Ensure Admin Login Behaves Correctly
     # def test_diagnos(self):
     #     tester = app.test_client(self)
