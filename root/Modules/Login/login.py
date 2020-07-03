@@ -21,14 +21,16 @@ def auth():
         login = request.form["user_id"]
         password = request.form["password"]
         dateTimeObj = datetime.now()
-        encrypted_password = userstore.query.filter_by(
-            login=login).first().password
-        password_verification = sha256_crypt.verify(
+        user_id = userstore.query.filter_by(
+            login=login).first()
+        if user_id:
+            encrypted_password = user_id.password
+            password_verification = sha256_crypt.verify(
             password, encrypted_password)
-        if password_verification:
-            session["login"] = login
-            session["password"] = encrypted_password
-            found_user = userstore.query.filter_by(
+            if password_verification:
+                session["login"] = login
+                session["password"] = encrypted_password
+                found_user = userstore.query.filter_by(
                 login=login, password=encrypted_password).first()
         if found_user:
             user_type = found_user.user_type
